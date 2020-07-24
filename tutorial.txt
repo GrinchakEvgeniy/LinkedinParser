@@ -1,0 +1,24 @@
+1.Unpack the application on the disk "D:/"
+2. In your profile Linkedin, remove two-factor authentication
+3. Open your browser and follow the link https://www.python.org/ftp/python/3.8.0/python-3.8.0.exe
+4. When the installer has finished downloading, double-click it to start the installation Python. 
+Be sure to check the box on «Add Python X.Y to PATH» in the setup wizard. 
+Make sure that the "Add Python X.Y to PATH" checkbox is checked in the installer, otherwise you will have trouble accessing the Python installer's command line. 
+Press "Install" to start the installation. Installation should be quick and Python will be ready to run on your system. 
+The next step is to make sure that everything has been done properly.
+5. Open the Windows command line by running cmd.exe and run the following commands:
+	* pip install Django
+	* pip install selenium
+	* pip install beautifulsoup4
+!!!We're doing this once in a while.!!!
+6. Next, open the Windows command line by running cmd.exe and run the following commands:
+	* cd D:
+	* D:
+	* cd LinkedinParser
+	* python manage.py runserver
+7. We open a Chrome browser and enter http://127.0.0.1:8000/
+8.After you finish your work with the application, open the Windows command line by running cmd.exe and run the following commands:
+	* press the key combination Ctrl+C
+	* Close the command line Windows
+
+To reuse the application, follow the steps in step 6 and 7

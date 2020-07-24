@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--<link rel="shortcut icon" href="img/favicon.jpg" type="image/x-icon">-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linkedin Parser App</title>
+
+</head>
+<body>
+<style type="text/css">
+			* {
+		margin: 0;
+		padding: 0;
+		outline: none;
+		box-sizing: border-box;
+	}
+	html {
+		scroll-behavior: smooth; /*плавная прокрутка*/
+		font-family: "Arial", sans-serif;
+		font-size: 16px;
+		color: black;
+		overflow-wrap: break-word;
+	}
+	.wrap {
+		max-width: 100%;
+		min-width: 320px;
+		margin: 15px auto;
+	}
+	.container {
+		max-width: 1200px;
+		min-width: 320px;
+		padding: 0 15px;
+		margin: 0 auto;
+	}
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+	a {
+		text-decoration: none;
+		outline: none;
+		transition: 0.2s all linear;
+	}
+	a:hover {
+		cursor: pointer;
+	}
+	ul {
+		list-style: none;
+	}
+	input,
+	button {
+		transition: 0.2s all linear;
+		cursor: pointer;
+	}
+	/*====================//====================*/
+	.main__table {
+		border-collapse: collapse;
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	.main__table thead,
+	.main__table tbody {
+		display: block;
+	}
+	.main__table tr {
+		display: flex;
+        justify-content: space-between;
+	}
+    .main__table th,
+    .main__table td {
+        flex-basis: 10%;
+    }
+
+
+    .main__table th:nth-child(1),
+    .main__table td:nth-child(1) {
+        flex-basis: 15%;
+    }
+    .main__table th:nth-child(2),
+    .main__table td:nth-child(2) {
+        flex-basis: 25%;
+    }
+	.main__table th,
+	.main__table td {
+		border: 1px solid #41719c;
+		text-align: center;
+		padding: 5px;
+		vertical-align: top;
+	}
+	.main__table td {
+		word-break: break-word;
+        text-align: left;
+	}
+	.main__table th {
+		background-color: #5b9bd5;
+	}
+	/*====================//====================*/
+	.main__form > div {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.main__form > div:nth-child(2) {
+		justify-content: center;
+	}
+	.main__form > div > *:not(:last-child) {
+		margin-right: 15px;
+	}
+	.main__form input,
+	.main__form button {
+		margin-bottom: 15px;
+	}
+	.main__form input {
+		border: 1px solid #41719c;
+		padding: 5px;
+		min-height: 35px;
+		width: 100%;
+		max-width: 300px;
+	}
+	.main__form input::placeholder {
+		color: #41719c;
+	}
+	.form__btn {
+		text-align: center;
+		color: white;
+		background-color: #5b9bd5;
+		border: 1px solid #41719c;
+		font-size: 20px;
+		padding: 5px 20px;
+	}
+	.btns__block {
+		display: flex;
+		justify-content: space-between;
+	}
+	.btns__block .form__btn {
+		text-transform: uppercase;
+		width: 100%;
+		max-width: 155px;
+		padding: 5px;
+	}
+	.form__info {
+		text-align: center;
+		border: 1px solid #41719c;
+		padding: 100px 15px;
+		margin-top: -1px;
+	}
+	.form__info p {
+		font-size: 20px;
+		line-height: 1.5;
+		font-weight: 500;
+	}
+	/*====================//====================*/
+	@media all and (max-width: 1024px) {
+		/*.main__table thead {
+			display: none;
+		}
+		.main__table td {
+			display: flex;
+			justify-content: space-between;
+			text-align: right;
+		}
+		.main__table td::before {
+			content: attr(data-label);
+			font-weight: bold;
+			margin-right: 20px;
+			text-align: left;
+		}*/
+	}
+	/*====================//====================*/
+	@media all and (max-width: 767px) {
+
+	}
+	/*====================//====================*/
+	@media all and (max-width: 767px) {
+		.item {
+			flex-basis: 50%;
+		}
+	}
+	/*====================//====================*/
+	@media all and (max-width: 575px) {
+		.item {
+			flex-basis: 100%;
+		}
+		.main__form > div {
+			flex-direction: column;
+		}
+		.main__form > div > *:not(:last-child) {
+			margin-right: 0;
+		}
+	}
+	/*====================//====================*/
+	@media all and (max-width: 375px) {
+		.btns__block {
+			flex-direction: column;
+			align-items: center;
+		}
+		.btns__block .form__btn {
+			margin-bottom: 15px;
+		}
+	}
+
+    .custom__form {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .custom__form .search_form {
+        margin-right: 15px;
+    }
+    .warning {
+        background-color: lightsalmon;
+    }
+
+</style>
+<div class="wrap">
+	<div class="container">
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+		<!--====================//====================-->
+		<div class="form__block">
+			<form class="main__form" action="" method="POST">{% csrf_token %}
+				<div>
+					<input type="hidden" name="connect_linkedin" value="default">
+					<input class="form__login" type="text" placeholder="login" type="text" id="userNameLinkedin" name="userNameLinkedin" aria-label="Search" value="{% if login %}{{ login }}{% endif %}">
+					<input class="form__pass" type="password" placeholder="password" value="{% if password %}{{password}}{% endif %}" id="userPasswordLinkedin" name="userPasswordLinkedin" aria-label="Search">
+					<button class="form__btn btn__login">Login</button>
+				</div>
+				<div>
+					<input class="form__url" id="companyURL" name="companyURL" aria-label="Search" type="text" placeholder="Insert URL here">
+                    <input type="text" class="form__url search_form" placeholder="Search" id="searchField" name="searchField">
+					<input class="form__btn" type="submit" value="Connect">
+				</div>
+			</form>
+            <form action="" style="float: left; margin-right: 10px;" class="main__form" method="POST">{% csrf_token %}
+                <input type="hidden" value="stop" name="stop">
+                <input class="form__btn" type="submit" value="Stop">
+            </form>
+			<div class="btns__block">
+				<form method="POST" action="">{% csrf_token %}
+				    <button class="form__btn" name="clear" value="default" type="submit">CLEAR ALL</button>
+                </form>
+				<a href="/download-leads/" class="form__btn">EXPORT CSV LEADS</a>
+				<a href="/download-contacts/" class="form__btn">EXPORT CSV CONTACTS</a>
+			</div>
+			<div class="form__info">
+				<table class="main__table">
+			<thead>
+			<tr>
+				<th>Company name</th>
+				<th>Company description</th>
+				<th>Adress</th>
+				<th>URL</th>
+				<th>Contact</th>
+				<th>Title</th>
+				<th>Phone</th>
+				<th>Email</th>
+			</tr>
+			</thead>
+			<tbody>
+				{% if data %}
+				{% for r in data %}
+			<tr>
+				<td data-label="Company name">{{ r.0}}<form method="POST" action="">{% csrf_token %}
+                    <button class="form__btn" name="delete_row" value="{{ r.0}}" type="submit">Del</button>
+                </form></td>
+				<td data-label="Company description">{{ r.1}}</td>
+				<td data-label="Adress">{{ r.2}}</td>
+				<td data-label="URL">{{ r.3}}</td>
+				<td data-label="Contact">
+                    <span>1. {{ r.4}}</span><br>
+                    <span>2. {{ r.8}}</span><br>
+                    <span>3. {{ r.12}}</span><br>
+                    <span>4. {{ r.16}}</span>
+                </td>
+				<td data-label="Title">
+                    <span>1. {{ r.5}}</span><br>
+                    <span>2. {{ r.9}}</span><br>
+                    <span>3. {{ r.13}}</span><br>
+                    <span>4. {{ r.17}}</span>
+                </td>
+				<td data-label="Phone">
+                    <span>1. {{ r.6}}</span><br>
+                    <span>2. {{ r.10}}</span><br>
+                    <span>3. {{ r.14}}</span><br>
+                    <span>4. {{ r.18}}</span>
+                </td>
+				<td data-label="Email">
+                    <span>1. {{ r.7}}</span><br>
+                    <span>2. {{ r.11}}</span><br>
+                    <span>3. {{ r.15}}</span><br>
+                    <span>4. {{ r.19}}</span>
+                </td>
+			</tr>
+			{% endfor %}
+			{% endif %}
+			</tbody>
+		</table>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

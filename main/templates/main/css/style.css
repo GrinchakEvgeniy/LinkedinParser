@@ -1,0 +1,234 @@
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	box-sizing: border-box;
+}
+html {
+	scroll-behavior: smooth; /*плавная прокрутка*/
+	font-family: "Arial", sans-serif;
+	font-size: 16px;
+	color: black;
+	overflow-wrap: break-word;
+}
+.wrap {
+	max-width: 100%;
+	min-width: 320px;
+	margin: 15px auto;
+}
+.container {
+	max-width: 1200px;
+	min-width: 320px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0, 0, 0, 0);
+	overflow: hidden;
+}
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+a {
+	text-decoration: none;
+	outline: none;
+	transition: 0.2s all linear;
+}
+a:hover {
+	cursor: pointer;
+}
+ul {
+	list-style: none;
+}
+input,
+button {
+	transition: 0.2s all linear;
+	cursor: pointer;
+}
+.btn {
+}
+.btn:hover {
+}
+/*====================//====================*/
+/*.data__block,
+.contact__block {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+.data__block .item,
+.contact__block .item {
+	background-color: #ffe4c4;
+}
+.item {
+	padding: 10px;
+	margin-bottom: 15px;
+	flex-basis: 25%;
+	border: 1px solid grey;
+}
+.title,
+.info {
+	text-align: center;
+	padding: 10px 0;
+}
+.company__block {
+	padding: 10px;
+	border: 1px solid grey;
+	text-align: center;
+	margin-bottom: 15px;
+	background-color: #ffe4c4;
+}*/
+/*====================//====================*/
+.main__table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 15px;
+}
+.main__table th,
+.main__table td {
+	border: 1px solid #41719c;
+	text-align: center;
+	padding: 5px;
+	vertical-align: top;
+}
+.main__table th {
+	background-color: #5b9bd5;
+}
+/*====================//====================*/
+.main__form > div {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.main__form > div:nth-child(2) {
+	justify-content: center;
+}
+.main__form > div > *:not(:last-child) {
+	margin-right: 15px;
+}
+.main__form input,
+.main__form button {
+	margin-bottom: 15px;
+}
+.main__form input {
+	border: 1px solid #41719c;
+	padding: 5px;
+	min-height: 35px;
+	width: 100%;
+	max-width: 300px;
+}
+.main__form input::placeholder {
+	color: #41719c;
+}
+.form__btn {
+	text-align: center;
+	color: white;
+	background-color: #5b9bd5;
+	border: 1px solid #41719c;
+	font-size: 20px;
+	padding: 5px 20px;
+}
+.btns__block {
+	display: flex;
+	justify-content: space-between;
+}
+.btns__block .form__btn {
+	text-transform: uppercase;
+	width: 100%;
+	max-width: 155px;
+	padding: 5px;
+}
+.form__info {
+	text-align: center;
+	border: 1px solid #41719c;
+	padding: 100px 15px;
+	margin-top: -1px;
+}
+.form__info p {
+	font-size: 20px;
+	line-height: 1.5;
+	font-weight: 500;
+}
+/*====================//====================*/
+@media all and (max-width: 1024px) {
+	.main__table thead {
+		display: none;
+	}
+	.main__table tr {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+	.main__table td {
+		display: flex;
+		justify-content: space-between;
+		text-align: right;
+	}
+	.main__table td:nth-child(even) {
+		border-left: none;
+	}
+	.main__table td {
+		border-top: none;
+	}
+	.main__table td:nth-child(1),
+	.main__table td:nth-child(2) {
+		border-top: 1px solid #41719c;
+	}
+	.main__table td::before {
+		content: attr(data-label);
+		font-weight: bold;
+		margin-right: 20px;
+		text-align: left;
+	}
+}
+/*====================//====================*/
+@media all and (max-width: 767px) {
+	.main__table tr {
+		grid-template-columns: 1fr;
+	}
+	.main__table td:nth-child(2) {
+		border-top: none;
+	}
+	.main__table td:nth-child(even) {
+		border-left: 1px solid #41719c;
+	}
+}
+/*====================//====================*/
+@media all and (max-width: 767px) {
+	.item {
+		flex-basis: 50%;
+	}
+}
+/*====================//====================*/
+@media all and (max-width: 575px) {
+	.item {
+		flex-basis: 100%;
+	}
+	.main__form > div {
+		flex-direction: column;
+	}
+	.main__form > div > *:not(:last-child) {
+		margin-right: 0;
+	}
+}
+/*====================//====================*/
+@media all and (max-width: 375px) {
+	.btns__block {
+		flex-direction: column;
+		align-items: center;
+	}
+	.btns__block .form__btn {
+		margin-bottom: 15px;
+	}
+}
